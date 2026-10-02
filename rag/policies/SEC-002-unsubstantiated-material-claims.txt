@@ -1,0 +1,44 @@
+POLICY ID: SEC-002
+TITLE: Substantiation of Material Statements of Fact
+REGULATOR: SEC
+PRIMARY SOURCE: Investment Advisers Act Rule 206(4)-1
+CATEGORY: Claim Substantiation
+POLICY TYPE: Content Review
+
+APPLICABILITY NOTE:
+Designed for communications potentially subject to the SEC Investment Adviser Marketing Rule.
+
+PURPOSE:
+Identify material factual claims for which substantiation may be required.
+
+SYNTHETIC REVIEW POLICY:
+A material statement of fact in an advertisement should be reviewed when there may not be a reasonable basis for believing the adviser can substantiate the statement if required.
+
+REVIEW SIGNALS:
+- unsupported numerical claims
+- unsupported claims of superiority
+- factual claims without an apparent basis
+- claims regarding results, rankings, capabilities, or experience that may require evidence
+
+RETRIEVAL EXAMPLES:
+"We are the number one advisory team in the region."
+"Our strategy beats competing strategies."
+"Clients using this strategy consistently earn higher returns."
+"We have the industry's best performance."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Identify the claim for review and allow the downstream system or reviewer to determine whether adequate substantiation exists.
+
+ClearSend should not assume that a claim is false merely because supporting evidence is not contained in the communication.
+
+SUGGESTED LABEL:
+Material claim may require substantiation.
+
+PROTOTYPE SEVERITY:
+Medium to High
+
+SOURCE BASIS:
+SEC Investment Adviser Marketing Rule general prohibition concerning substantiation of material statements of fact.
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

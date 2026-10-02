@@ -1,0 +1,43 @@
+POLICY ID: FINRA-003
+TITLE: Investment Performance Predictions and Projections
+REGULATOR: FINRA
+PRIMARY SOURCE: FINRA Rule 2210(d)(1)(F)
+CATEGORY: Performance Claims
+POLICY TYPE: Content Review
+
+PURPOSE:
+Identify communications that may predict or project investment performance, imply that past performance will recur, or make exaggerated or unwarranted forecasts.
+
+SYNTHETIC REVIEW POLICY:
+Communications containing predictions or projections of investment performance, implications that past performance will recur, or exaggerated or unwarranted forecasts should be reviewed.
+
+The underlying FINRA rule contains specific exceptions and additional provisions. ClearSend should therefore identify potentially relevant language rather than independently determine whether a communication falls within an exception.
+
+REVIEW SIGNALS:
+- "will return" statements
+- definite future performance predictions
+- statements that historical performance will continue
+- certain price-growth forecasts
+- exaggerated forecasts about future results
+
+RETRIEVAL EXAMPLES:
+"This fund will return 15% next year."
+"Based on its history, it will keep producing these returns."
+"This stock is going to double."
+"You can expect the same returns next year."
+"This strategy will outperform the market."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Retrieve this policy for potentially predictive or projected performance language and recommend review.
+
+SUGGESTED LABEL:
+Potential performance prediction or projection — review recommended.
+
+PROTOTYPE SEVERITY:
+High
+
+SOURCE BASIS:
+FINRA Rule 2210(d)(1)(F).
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

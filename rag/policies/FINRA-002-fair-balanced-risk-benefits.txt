@@ -1,0 +1,40 @@
+POLICY ID: FINRA-002
+TITLE: Fair and Balanced Presentation of Risks and Benefits
+REGULATOR: FINRA
+PRIMARY SOURCE: FINRA Rule 2210(d)(1)(D)
+CATEGORY: Risk and Benefit Presentation
+POLICY TYPE: Content Review
+
+PURPOSE:
+Identify communications that emphasize potential investment benefits while inadequately presenting associated risks or uncertainty.
+
+SYNTHETIC REVIEW POLICY:
+Communications should present investment risks and potential benefits in a balanced manner. Statements should be clear within their context and consistent with the uncertainty and risks inherent in investments.
+
+REVIEW SIGNALS:
+- substantial discussion of upside with little or no discussion of risk
+- statements implying an investment has no downside
+- minimizing investment risk
+- presenting uncertain returns as highly predictable
+- benefit claims that may create an unbalanced impression
+
+RETRIEVAL EXAMPLES:
+"This investment has basically no downside."
+"You get all of the upside without the risk."
+"This gives you market growth without having to worry about losses."
+"The returns are excellent and there really isn't much risk to consider."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Retrieve this policy when communication language may warrant review for balanced treatment of investment risks and potential benefits.
+
+SUGGESTED LABEL:
+Risk/benefit balance may require review.
+
+PROTOTYPE SEVERITY:
+High
+
+SOURCE BASIS:
+FINRA Rule 2210(d)(1)(D), concerning clear and non-misleading statements and balanced treatment of risks and potential benefits.
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

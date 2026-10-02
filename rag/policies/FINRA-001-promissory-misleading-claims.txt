@@ -1,0 +1,44 @@
+POLICY ID: FINRA-001
+TITLE: False, Exaggerated, Unwarranted, Promissory, or Misleading Claims
+REGULATOR: FINRA
+PRIMARY SOURCE: FINRA Rule 2210(d)(1)(B)
+CATEGORY: Communications Content Standards
+POLICY TYPE: Content Review
+
+PURPOSE:
+Identify financial communications containing language that may be false, exaggerated, unwarranted, promissory, or misleading.
+
+SYNTHETIC REVIEW POLICY:
+Communications should be reviewed when they state or imply uncertain investment outcomes as certain, make unsupported absolute claims, exaggerate benefits, or otherwise create a potentially misleading impression.
+
+REVIEW SIGNALS:
+- guaranteed investment success
+- certainty of profit
+- statements that an investor cannot lose money
+- exaggerated claims regarding an investment or strategy
+- absolute claims about future investment outcomes
+- statements that could create a misleading impression
+
+RETRIEVAL EXAMPLES:
+"This investment is guaranteed to make you money."
+"You can't lose with this fund."
+"This strategy is guaranteed to outperform."
+"There is absolutely no way this investment can go down."
+"This is definitely going to be a winning investment."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Retrieve this policy as potentially relevant and provide it as context to the downstream review system.
+
+ClearSend should identify a potential compliance concern. It should not determine that the communication violates FINRA rules.
+
+SUGGESTED LABEL:
+Potential promissory or misleading claim — review recommended.
+
+PROTOTYPE SEVERITY:
+High
+
+SOURCE BASIS:
+FINRA Rule 2210(d)(1)(B), Communications with the Public — Content Standards.
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

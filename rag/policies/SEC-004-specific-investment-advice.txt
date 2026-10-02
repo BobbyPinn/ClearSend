@@ -1,0 +1,41 @@
+POLICY ID: SEC-004
+TITLE: Fair and Balanced Presentation of Specific Investment Advice
+REGULATOR: SEC
+PRIMARY SOURCE: Investment Advisers Act Rule 206(4)-1
+CATEGORY: Specific Investment Advice
+POLICY TYPE: Content Review
+
+APPLICABILITY NOTE:
+Designed for communications potentially subject to the SEC Investment Adviser Marketing Rule.
+
+PURPOSE:
+Identify adviser advertisements referencing specific investment advice that may require review for fair and balanced presentation.
+
+SYNTHETIC REVIEW POLICY:
+References to specific investment advice in an advertisement should be presented in a fair and balanced manner.
+
+REVIEW SIGNALS:
+- highlighting successful investment recommendations without appropriate context
+- selective presentation of specific investment advice
+- discussion of winning recommendations that may create an unbalanced impression
+- presentation of particular investment selections without balanced context
+
+RETRIEVAL EXAMPLES:
+"Look at these five stocks we recommended — every one was a winner."
+"Our technology picks made clients significant money."
+"These recommendations show why our investment process works."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Retrieve this policy when an advertisement references specific investment advice and may warrant review for fair and balanced presentation.
+
+SUGGESTED LABEL:
+Specific investment advice presentation — review suggested.
+
+PROTOTYPE SEVERITY:
+Medium to High
+
+SOURCE BASIS:
+SEC Investment Adviser Marketing Rule general prohibitions concerning specific investment advice.
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

@@ -1,0 +1,42 @@
+POLICY ID: FINRA-004
+TITLE: Material Information, Omissions, and Context
+REGULATOR: FINRA
+PRIMARY SOURCE: FINRA Rule 2210(d)(1)(A)
+CATEGORY: Material Information
+POLICY TYPE: Content Review
+
+PURPOSE:
+Identify communications where omitted material facts or qualifications may cause the communication to be misleading.
+
+SYNTHETIC REVIEW POLICY:
+Financial communications should provide a sound basis for evaluating relevant facts. A material fact or qualification should not be omitted when its omission, considering the context of the communication, could make the communication misleading.
+
+REVIEW SIGNALS:
+- important qualifications appear to be missing
+- investment benefits are stated without important conditions
+- statements depend on assumptions that are not communicated
+- material limitations appear to be omitted
+- selective information may change the overall impression
+
+RETRIEVAL EXAMPLES:
+"There are no fees you need to worry about."
+"This investment gives you immediate access to your money."
+"This provides tax-free income."
+"This product protects your principal."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Retrieve this policy when the communication may require additional context, qualifications, or material information.
+
+ClearSend should not independently determine whether an omitted fact is legally material.
+
+SUGGESTED LABEL:
+Additional context or qualification may be needed.
+
+PROTOTYPE SEVERITY:
+Medium
+
+SOURCE BASIS:
+FINRA Rule 2210(d)(1)(A).
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

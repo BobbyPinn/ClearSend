@@ -1,0 +1,47 @@
+POLICY ID: SEC-006
+TITLE: Testimonials and Endorsements
+REGULATOR: SEC
+PRIMARY SOURCE: Investment Advisers Act Rule 206(4)-1
+CATEGORY: Testimonials and Endorsements
+POLICY TYPE: Content Review
+
+APPLICABILITY NOTE:
+Designed for advertisements involving testimonials or endorsements potentially subject to the SEC Investment Adviser Marketing Rule.
+
+PURPOSE:
+Identify communications containing testimonials or endorsements that may trigger additional disclosure, oversight, written-agreement, or disqualification considerations.
+
+SYNTHETIC REVIEW POLICY:
+Advertisements using testimonials or endorsements may require specialized review under the SEC Marketing Rule.
+
+Depending on the circumstances, requirements can involve disclosures concerning client status, compensation, and conflicts of interest, as well as oversight, written agreements, and promoter eligibility. Exceptions may apply.
+
+REVIEW SIGNALS:
+- client testimonial
+- paid endorsement
+- promoter statement
+- influencer or spokesperson recommendation
+- compensation for recommending the adviser
+- client success quote used in marketing
+
+RETRIEVAL EXAMPLES:
+"One of our clients says we're the best investment adviser she's ever used."
+"We paid this financial influencer to recommend our advisory service."
+"Here's what one of our clients said about the returns we helped him achieve."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Retrieve this policy and recommend specialized review when testimonial or endorsement language appears in a potentially covered advertisement.
+
+ClearSend should not independently determine whether an exception applies.
+
+SUGGESTED LABEL:
+Testimonial or endorsement — compliance review recommended.
+
+PROTOTYPE SEVERITY:
+Medium to High
+
+SOURCE BASIS:
+SEC Investment Adviser Marketing Rule testimonial and endorsement provisions.
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

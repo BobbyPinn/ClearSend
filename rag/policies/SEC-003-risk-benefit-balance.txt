@@ -1,0 +1,41 @@
+POLICY ID: SEC-003
+TITLE: Fair and Balanced Treatment of Material Risks and Benefits
+REGULATOR: SEC
+PRIMARY SOURCE: Investment Advisers Act Rule 206(4)-1
+CATEGORY: Risk and Benefit Presentation
+POLICY TYPE: Content Review
+
+APPLICABILITY NOTE:
+Designed for communications potentially subject to the SEC Investment Adviser Marketing Rule.
+
+PURPOSE:
+Identify marketing communications that discuss potential benefits without fair and balanced treatment of associated material risks or limitations.
+
+SYNTHETIC REVIEW POLICY:
+When an advertisement discusses potential benefits, associated material risks and limitations should receive fair and balanced treatment.
+
+REVIEW SIGNALS:
+- strong benefit claims with no meaningful discussion of risk
+- discussion of upside without material limitations
+- language minimizing material risks
+- one-sided presentation of an investment strategy
+
+RETRIEVAL EXAMPLES:
+"This strategy gives you substantial growth potential with virtually no downside."
+"The opportunity offers excellent returns without the usual concerns."
+"You receive all the benefits of market participation without having to worry about the risks."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Retrieve this policy when benefit-oriented marketing language may warrant review for associated material risks or limitations.
+
+SUGGESTED LABEL:
+Risk/benefit balance review suggested.
+
+PROTOTYPE SEVERITY:
+High
+
+SOURCE BASIS:
+SEC Investment Adviser Marketing Rule general prohibitions.
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

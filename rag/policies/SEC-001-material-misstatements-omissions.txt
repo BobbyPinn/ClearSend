@@ -1,0 +1,41 @@
+POLICY ID: SEC-001
+TITLE: Material Misstatements and Omissions in Adviser Advertising
+REGULATOR: SEC
+PRIMARY SOURCE: Investment Advisers Act Rule 206(4)-1
+CATEGORY: Marketing Communications
+POLICY TYPE: Content Review
+
+APPLICABILITY NOTE:
+Designed for retrieval when the communication may constitute an advertisement subject to the SEC Investment Adviser Marketing Rule. ClearSend should not assume that every advisor communication is an advertisement.
+
+PURPOSE:
+Identify potentially untrue material statements or material omissions that may cause an adviser advertisement to be misleading.
+
+SYNTHETIC REVIEW POLICY:
+An advertisement should not include an untrue statement of material fact or omit material information necessary to prevent the statement, considering its circumstances, from being misleading.
+
+REVIEW SIGNALS:
+- potentially false material statements
+- missing qualifications
+- omitted material limitations
+- statements that may create a materially misleading overall impression
+
+RETRIEVAL EXAMPLES:
+"Our strategy has never lost money."
+"There are no meaningful limitations to this strategy."
+"Every client has benefited from this approach."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Retrieve this policy as potentially relevant when an adviser marketing communication may contain a material misstatement or omission.
+
+SUGGESTED LABEL:
+Potential material statement or omission — review recommended.
+
+PROTOTYPE SEVERITY:
+High
+
+SOURCE BASIS:
+SEC Investment Advisers Act Rule 206(4)-1, Marketing Rule general prohibitions.
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

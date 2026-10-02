@@ -1,0 +1,41 @@
+POLICY ID: FINRA-005
+TITLE: Audience-Appropriate Communications
+REGULATOR: FINRA
+PRIMARY SOURCE: FINRA Rule 2210(d)(1)(E)
+CATEGORY: Audience and Communication Context
+POLICY TYPE: Context Review
+
+PURPOSE:
+Support review of whether the nature of the intended audience may affect the level of detail and explanation appropriate for a communication.
+
+SYNTHETIC REVIEW POLICY:
+The intended audience is relevant when reviewing a financial communication. Communications should provide details and explanations appropriate to the nature of the audience.
+
+REVIEW SIGNALS:
+- highly technical investment language directed to a retail audience
+- insufficient explanation of complex concepts
+- communication context where intended audience affects interpretation
+- unclear audience classification
+
+RETRIEVAL EXAMPLES:
+"This structured product uses autocall barriers, contingent coupons, and downside buffers."
+"This strategy uses options overlays and volatility harvesting to enhance risk-adjusted returns."
+"This product has complex liquidity and redemption conditions."
+These are retrieval examples for audience/context review, not examples of regulatory violations.
+
+EXPECTED CLEARSEND BEHAVIOR:
+Use audience metadata as part of retrieval and review when available.
+
+ClearSend should not determine investor sophistication or regulatory classification solely from communication text.
+
+SUGGESTED LABEL:
+Audience/context review suggested.
+
+PROTOTYPE SEVERITY:
+Context Dependent
+
+SOURCE BASIS:
+FINRA Rule 2210(d)(1)(E).
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.

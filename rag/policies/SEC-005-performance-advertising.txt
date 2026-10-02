@@ -1,0 +1,47 @@
+POLICY ID: SEC-005
+TITLE: Performance Information in Adviser Advertising
+REGULATOR: SEC
+PRIMARY SOURCE: Investment Advisers Act Rule 206(4)-1
+CATEGORY: Performance Advertising
+POLICY TYPE: Content Review
+
+APPLICABILITY NOTE:
+Designed for advertisements containing investment performance information that may be subject to the SEC Investment Adviser Marketing Rule.
+
+PURPOSE:
+Identify communications containing performance information that may require additional review under the Marketing Rule.
+
+SYNTHETIC REVIEW POLICY:
+Advertisements containing performance information require specialized review. The SEC Marketing Rule imposes conditions and prohibitions involving matters including gross and net performance, prescribed performance periods in applicable circumstances, hypothetical performance, predecessor performance, extracted performance, and statements concerning Commission approval.
+
+REVIEW SIGNALS:
+- performance percentages
+- gross performance presented without apparent net performance
+- hypothetical performance
+- extracted performance
+- predecessor performance
+- statements suggesting SEC approval of performance calculations
+- selective performance periods or results
+
+RETRIEVAL EXAMPLES:
+"Our portfolio returned 18%."
+"This hypothetical strategy would have returned 22%."
+"The SEC has reviewed and approved these performance calculations."
+"Here are the returns from our best-performing accounts."
+
+EXPECTED CLEARSEND BEHAVIOR:
+Retrieve this policy when performance information appears in a potentially covered adviser advertisement.
+
+ClearSend should recommend specialized review rather than independently determine whether the performance presentation satisfies every condition of the Marketing Rule.
+
+SUGGESTED LABEL:
+Performance information — compliance review recommended.
+
+PROTOTYPE SEVERITY:
+High
+
+SOURCE BASIS:
+SEC Investment Adviser Marketing Rule performance provisions.
+
+DISCLAIMER:
+Synthetic demonstration policy created for the ClearSend hackathon prototype. This is not an official LPL Financial policy, FINRA or SEC policy document, and does not reproduce LPL Financial supervisory procedures. It is not legal or compliance advice. ClearSend assists with pre-review and does not provide final compliance approval.
