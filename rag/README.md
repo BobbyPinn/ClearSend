@@ -12,9 +12,9 @@ ClearSend is not an LPL Financial product, does not use or claim access to LPL p
 
 This directory holds the retrieval/compliance knowledge layer: the synthetic policy corpus in `policies/`, the retrieval integration code in `src/`, and retrieval relevance tests in `tests/`.
 
-**In scope:** policy corpus authoring, retrieval integration, retrieval evaluation.
+**In scope:** policy corpus authoring, S3 upload, Amazon Bedrock Knowledge Base setup and sync, retrieval integration, retrieval evaluation.
 
-**Out of scope:** frontend UX (Jesus), backend APIs, AWS application integration, Bedrock compliance analysis, DynamoDB (Ayush).
+**Out of scope:** frontend UX (Jesus), backend APIs, Bedrock compliance analysis, DynamoDB (Ayush).
 
 ## Policy corpus
 
@@ -46,24 +46,37 @@ Because metadata is plain text rather than structured frontmatter, the fields ar
 
 ## Regulatory grounding and limitations
 
-These are synthetic demonstration policies derived from publicly available regulatory material for a hackathon prototype. They are **not** official LPL Financial policies, and are not FINRA or SEC policy documents. Each document carries a disclaimer to that effect.
+These are synthetic demonstration policies derived from publicly available FINRA and SEC regulatory concepts for a hackathon prototype. They are **not** official LPL Financial policies, are not FINRA or SEC policy documents, and are not legal or compliance advice. Each document carries a disclaimer to that effect.
 
-The retrieval layer retrieves potentially relevant policy context. It does **not** determine whether a communication is compliant, whether it violates a rule, or whether any exception applies. Final contextual analysis belongs to the backend/compliance-analysis layer, not to this layer.
+The retrieval layer retrieves potentially relevant policy context. It does **not** determine whether a communication is compliant, whether it violates a rule, whether any exception applies, and it does **not** approve communications. Final contextual analysis belongs to the backend/compliance-analysis layer, not to this layer.
 
-## Planned AWS flow
+Retrieval has been manually tested successfully against multiple sample financial-advisor communications, confirming that the Knowledge Base returns relevant policy context for representative inputs.
 
-Not yet implemented. No AWS resources are deployed for this component.
+## AWS flow (deployed)
+
+The retrieval layer is deployed on AWS. The 11 synthetic policy documents in `policies/` have been uploaded to Amazon S3 and ingested into an Amazon Bedrock managed Knowledge Base, which has been synced with the S3 data source.
 
 ```
 policy documents (policies/*.txt)
-  → Amazon S3
-  → Amazon Bedrock Knowledge Base (embeddings + vector index)
-  → vector retrieval
+  → Amazon S3 (policy data source)
+  → Amazon Bedrock managed Knowledge Base (managed embeddings + vector index)
+  → semantic/vector retrieval
   → relevant policy results
-  → backend (Ayush)
+  → backend (compliance analysis / rewrite step)
 ```
 
-S3 bucket and Bedrock Knowledge Base configuration are owned by Ayush.
+**Knowledge Base configuration:**
+
+| Setting | Value |
+|---|---|
+| Knowledge Base name | `clearsend-compliance-kb` |
+| Knowledge Base ID | `MW45GBAMOF` |
+| AWS region | `us-east-1` |
+| Embeddings | Managed (Bedrock) |
+| Retrieval | Semantic / vector retrieval |
+| Data source | Amazon S3 (synced) |
+
+**Request flow.** The frontend communicates with the backend, not directly with the Knowledge Base. The backend retrieves potentially relevant policy context from the Knowledge Base and uses it as context for the compliance analysis / rewrite step.
 
 ## Structure
 
