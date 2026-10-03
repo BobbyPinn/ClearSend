@@ -1,5 +1,7 @@
 import json
 import re
+import uuid
+from datetime import datetime, timezone
 
 import boto3
 
@@ -12,6 +14,13 @@ kb = boto3.client(
     "bedrock-agent-runtime",
     region_name="us-east-1"
 )
+
+dynamodb = boto3.resource(
+    "dynamodb",
+    region_name="us-east-1"
+)
+
+reviews_table = dynamodb.Table("clearsend-reviews")
 
 KNOWLEDGE_BASE_ID = "MW45GBAMOF"
 
@@ -158,6 +167,30 @@ def _extract_json(text):
 
     return stripped.strip()
 
+def save_review(
+    message,
+    communication_type,
+    audience,
+    result
+):
+    review_id = str(uuid.uuid4())
+    timestamp = datetime.now(timezone.utc).isoformat()
+
+    item = {
+        "reviewID": review_id,
+        "timestamp": timestamp,
+        "communicationType": communication_type,
+        "audience": audience,
+        "message": message,
+        "concernLevel": result.get("concernLevel"),
+        "issues": result.get("issues", []),
+        "suggestedRewrite": result.get("suggestedRewrite", "")
+    }
+
+    reviews_table.put_item(Item=item)
+
+    return review_id
+
 def lambda_handler(event, context):
     try:
         body = event.get("body", {})
@@ -191,6 +224,15 @@ def lambda_handler(event, context):
             communication_type,
             audience
         )
+
+        review_id = save_review(
+            message,
+            communication_type,
+            audience,
+            result
+        )
+
+        result["reviewID"] = review_id
 
         return {
             "statusCode": 200,
