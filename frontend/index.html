@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ClearSend</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="#" onclick="show('review'); return false;">
+    <span class="mark" aria-hidden="true"></span>ClearSend
+  </a>
+  <nav>
+    <button id="navReview" class="active" onclick="show('review')">New review</button>
+    <button id="navHistory" onclick="show('history')">Audit log <span id="logCount" class="count">0</span></button>
+  </nav>
+</header>
+
+<main>
+  <!-- SCREEN 1: write a message -->
+  <section id="review" class="screen">
+    <div class="intro">
+      <h1>Review a message before it reaches a client.</h1>
+      <p>Paste an email, social post, or follow-up. ClearSend marks up anything a compliance officer would catch and drafts a version you can send.</p>
+    </div>
+
+    <div class="sheet compose">
+      <div class="compose-head">
+        <span class="field-label">Sending as</span>
+        <div class="chips" id="chips"></div>
+      </div>
+      <textarea id="text" rows="10" placeholder="Hi Jordan, following up on our call…"></textarea>
+      <div class="compose-foot">
+        <button class="ghost" onclick="useSample()">Try a sample message</button>
+        <button class="primary" id="reviewBtn" onclick="runReview()">Review message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCREEN 2: results -->
+  <section id="results" class="screen hidden"></section>
+
+  <!-- SCREEN 3: audit log -->
+  <section id="history" class="screen hidden">
+    <div class="intro">
+      <h1>Audit log</h1>
+      <p>Every message reviewed in this session, with the decision and the reasons behind it.</p>
+    </div>
+    <div class="sheet log" id="historyRows"></div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
