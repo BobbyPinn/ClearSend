@@ -45,7 +45,12 @@ async function runReview() {
   }
   const btn = document.getElementById("reviewBtn");
   btn.disabled = true;
-  btn.textContent = "Reviewing…";
+  btn.innerHTML = `<span class="spinner"></span>Reviewing…`;
+
+  // Allow the in-flight request to be cancelled from the overlay.
+  reviewController = new AbortController();
+  let cancelled = false;
+  showLoading();
 
   try {
     let result;
@@ -55,11 +60,17 @@ async function runReview() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ message: text, communicationType: { "Email": "client_email", "Social post": "social_post", "Client follow-up": "client_follow_up" }[channel], audience: "existing_client" }),
+          signal: reviewController.signal,
         });
         if (!res.ok) throw new Error("The review service returned " + res.status);
         const raw = await res.json();
         result = normalizeResponse(raw, text);
       } catch (apiErr) {
+        // User cancelled: abort quietly, no fallback, no error alert.
+        if (apiErr.name === "AbortError") {
+          cancelled = true;
+          return;
+        }
         // Fall back to mock data if the API errors (when enabled)
         if (CONFIG.ENABLE_MOCK_FALLBACK) {
           console.warn("API call failed, using mock fallback:", apiErr.message);
@@ -83,10 +94,32 @@ async function runReview() {
     show("results");
   } catch (e) {
     alert("Couldn't review the message. " + e.message);
+  } finally {
+    hideLoading();
+    reviewController = null;
+    btn.disabled = false;
+    btn.textContent = "Review message";
   }
+}
 
-  btn.disabled = false;
-  btn.textContent = "Review message";
+// ---------- loading overlay ----------
+let reviewController = null;
+
+function showLoading() {
+  const el = document.getElementById("loadingOverlay");
+  el.classList.remove("hidden");
+  el.setAttribute("aria-hidden", "false");
+}
+
+function hideLoading() {
+  const el = document.getElementById("loadingOverlay");
+  el.classList.add("hidden");
+  el.setAttribute("aria-hidden", "true");
+}
+
+// Cancel an in-flight review from the overlay's Cancel button.
+function cancelReview() {
+  if (reviewController) reviewController.abort();
 }
 
 // ---------- screen 2: results ----------

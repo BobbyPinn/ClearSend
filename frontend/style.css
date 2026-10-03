@@ -109,6 +109,65 @@ main { max-width: 1040px; margin: 0 auto; padding: 40px clamp(16px, 4vw, 40px) 6
 }
 .secondary:hover { border-color: var(--ink-soft); }
 
+/* ---------- loading animation ---------- */
+@keyframes cs-spin { to { transform: rotate(360deg); } }
+@keyframes cs-fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+.overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(20, 32, 51, 0.45);
+  backdrop-filter: blur(2px);
+  animation: cs-fade-in 0.15s ease-out;
+}
+.overlay.hidden { display: none; }
+
+.loader-card {
+  background: var(--paper);
+  border-radius: 10px;
+  padding: 32px 40px;
+  text-align: center;
+  box-shadow: 0 24px 60px -20px rgba(20, 32, 51, 0.5);
+  max-width: 320px;
+}
+.loader-card .spinner {
+  width: 40px; height: 40px; margin: 0 auto 18px;
+}
+.loader-text {
+  font-family: var(--serif); font-size: 1.2rem;
+  color: var(--ink); margin: 0 0 4px;
+}
+.loader-sub {
+  font-size: 0.9rem; color: var(--ink-soft); margin: 0;
+}
+.loader-cancel {
+  margin-top: 20px;
+}
+
+/* shared spinner (overlay + inline button) */
+.spinner {
+  display: inline-block;
+  border: 3px solid var(--rule);
+  border-top-color: var(--navy);
+  border-radius: 50%;
+  animation: cs-spin 0.7s linear infinite;
+}
+
+/* inline spinner inside the Review button while loading */
+.primary .spinner {
+  width: 15px; height: 15px;
+  border-width: 2px;
+  border-color: rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  vertical-align: -2px; margin-right: 8px;
+}
+
+/* respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation-duration: 1.6s; }
+  .overlay { animation: none; }
+}
+
 /* ---------- compose ---------- */
 .compose-head {
   display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
