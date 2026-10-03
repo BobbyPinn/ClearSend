@@ -208,6 +208,28 @@ textarea::placeholder { color: #a3adbd; }
 .note .policy { font-size: 0.82rem; color: var(--navy); font-weight: 500; }
 .margin-empty { color: var(--ink-soft); font-size: 0.95rem; margin: 0; }
 
+/* ---------- concern level + severity badges + flagged phrase ---------- */
+.level {
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; margin: 2px 0 6px; color: var(--ink-soft);
+}
+
+.phrase {
+  font-family: var(--serif); font-style: italic;
+  color: var(--ink); margin: 0 0 6px;
+}
+
+.sev {
+  display: inline-block; vertical-align: middle;
+  margin-left: 6px; padding: 1px 7px; border-radius: 999px;
+  font-family: var(--sans); font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.03em; line-height: 1.4;
+  /* default (high) */
+  background: var(--pencil-wash); color: var(--pencil);
+}
+.sev.medium { background: var(--amber-wash); color: var(--amber); }
+.sev.low { background: var(--clear-wash); color: var(--clear); }
+
 /* ---------- cleared version ---------- */
 .cleared {
   margin-top: 20px;

@@ -64,6 +64,7 @@ async function runReview() {
         if (CONFIG.ENABLE_MOCK_FALLBACK) {
           console.warn("API call failed, using mock fallback:", apiErr.message);
           result = await fakeReview(text);
+          result.summary = "⚠ DEMO DATA (API unavailable). " + result.summary;
         } else {
           throw apiErr;
         }
@@ -94,7 +95,7 @@ function drawResults(r) {
     high: r.escalate ? "Hold for compliance review" : "Fix before sending",
     medium: "Edit before sending",
     low: "Clear to send",
-  }[r.riskLevel];
+  }[r.riskLevel] || "Review complete";
 
   const changed = r.rewrite && r.rewrite !== r.original;
 
@@ -103,9 +104,10 @@ function drawResults(r) {
         <div class="note ${f.severity}" data-n="${i}" onmouseenter="light(${i})" onmouseleave="light(-1)" onclick="light(${i})">
           <span class="num">${i + 1}</span>
           <div>
-            <h3>${escapeHtml(f.category)}</h3>
+            <h3>${escapeHtml(f.category)} <span class="sev ${f.severity}">${escapeHtml(f.severity.toUpperCase())}</span></h3>
+            <p class="phrase">"${escapeHtml(f.phrase)}"</p>
             <p>${escapeHtml(f.explanation)}</p>
-            ${f.policyRef ? `<span class="policy">${escapeHtml(f.policyRef)}</span>` : ""}
+            ${f.policyRef ? `<span class="policy">Policy: ${escapeHtml(f.policyRef)}</span>` : ""}
           </div>
         </div>`).join("")
     : `<p class="margin-empty">Nothing flagged. No promises, risk claims, or pressure language found.</p>`;
@@ -114,9 +116,10 @@ function drawResults(r) {
     <div class="verdict ${r.riskLevel}">
       <div>
         <h1>${headline}</h1>
+        <p class="level">${escapeHtml(r.riskLevel.toUpperCase())} concern</p>
         <p>${escapeHtml(r.summary)}${r.escalate ? " This one has been sent to compliance." : ""}</p>
       </div>
-      <div class="audit">${escapeHtml(r.channel)} · ${formatTime(r.createdAt)}<strong>${escapeHtml(r.id)}</strong></div>
+      <div class="audit">${escapeHtml(r.channel)} · ${formatTime(r.createdAt)}Review ID: <strong>${escapeHtml(r.id)}</strong></div>
     </div>
 
     <div class="sheet markup">
@@ -268,7 +271,7 @@ function normalizeResponse(raw, originalText) {
     : "No issues found. This message is ready to send as written.");
 
   // id: use backend's if present, otherwise generate one
-  const id = raw.id || ("CS-" + String(Date.now()).slice(-6));
+  const id = raw.reviewID || raw.reviewId || raw.id || ("CS-" + String(Date.now()).slice(-6));
 
   return {
     id,
