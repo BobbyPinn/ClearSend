@@ -55,6 +55,16 @@
   </section>
 </main>
 
+<!-- Loading overlay: shown while a review is in flight -->
+<div id="loadingOverlay" class="overlay hidden" role="status" aria-live="polite" aria-hidden="true">
+  <div class="loader-card">
+    <span class="spinner" aria-hidden="true"></span>
+    <p class="loader-text">Analyzing your message…</p>
+    <p class="loader-sub">Checking against compliance policies</p>
+    <button class="secondary loader-cancel" onclick="cancelReview()">Cancel</button>
+  </div>
+</div>
+
 <script src="config.js"></script>
 <script src="script.js"></script>
 </body>
