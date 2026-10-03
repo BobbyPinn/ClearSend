@@ -1,7 +1,8 @@
 // ============================================================
-// SETTINGS: paste Ayush's API URL here when it's ready.
-// Leave it empty ("") to use fake demo data.
-const API_URL = "";
+// SETTINGS: reads API URL from config.js (CONFIG object).
+// If the API call fails and ENABLE_MOCK_FALLBACK is true,
+// falls back to fake demo data.
+const API_URL = CONFIG.API_URL || "";
 // ============================================================
 
 const CHANNELS = ["Email", "Social post", "Client follow-up"];
@@ -49,13 +50,24 @@ async function runReview() {
   try {
     let result;
     if (API_URL) {
-      const res = await fetch(API_URL + "/review", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, channel }),
-      });
-      if (!res.ok) throw new Error("The review service returned " + res.status);
-      result = await res.json();
+      try {
+        const res = await fetch(API_URL + "/review", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text, communicationType: { "Email": "client_email", "Social post": "social_post", "Client follow-up": "client_follow_up" }[channel], audience: "existing_client" }),
+        });
+        if (!res.ok) throw new Error("The review service returned " + res.status);
+        const raw = await res.json();
+        result = normalizeResponse(raw, text);
+      } catch (apiErr) {
+        // Fall back to mock data if the API errors (when enabled)
+        if (CONFIG.ENABLE_MOCK_FALLBACK) {
+          console.warn("API call failed, using mock fallback:", apiErr.message);
+          result = await fakeReview(text);
+        } else {
+          throw apiErr;
+        }
+      }
     } else {
       result = await fakeReview(text);
     }
@@ -205,6 +217,67 @@ function escapeHtml(s) {
 
 function formatTime(iso) {
   return new Date(iso).toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+}
+
+// ============================================================
+// Converts the backend response shape into the frontend shape.
+//   concernLevel      -> riskLevel (lowercased)
+//   issues[]          -> flags[] (severity lowercased, policyReference -> policyRef)
+//   suggestedRewrite  -> rewrite
+// Generates id, summary, and escalate when the backend omits them.
+// ============================================================
+function normalizeResponse(raw, originalText) {
+  // Defensive: if API Gateway isn't using Lambda proxy integration, the
+  // browser may receive the raw Lambda envelope { statusCode, headers, body }
+  // where `body` is a JSON string. Unwrap it so we read the real payload
+  // instead of silently defaulting everything to "low"/no-issues.
+  if (raw && typeof raw === "object" && "body" in raw && "statusCode" in raw) {
+    try {
+      raw = typeof raw.body === "string" ? JSON.parse(raw.body) : raw.body;
+    } catch (e) {
+      throw new Error("Could not parse review service response body.");
+    }
+  }
+
+  // Surface backend-reported errors (e.g., { error: "..." }) instead of
+  // treating them as a clean "all clear" result.
+  if (raw && raw.error) {
+    throw new Error(raw.error);
+  }
+
+  const riskLevel = String(raw.concernLevel || "low").toLowerCase();
+
+  const flags = (raw.issues || []).map(issue => ({
+    phrase: issue.phrase,
+    category: issue.category,
+    severity: String(issue.severity || "low").toLowerCase(),
+    explanation: issue.explanation,
+    policyRef: issue.policyReference,
+  }));
+
+  const rewrite = raw.suggestedRewrite || "";
+
+  const highCount = flags.filter(f => f.severity === "high").length;
+
+  // escalate when the backend doesn't say so: true if 2+ high-severity issues
+  const escalate = raw.escalate != null ? raw.escalate : highCount >= 2;
+
+  // summary: use backend's if present, otherwise build a sensible one
+  const summary = raw.summary || (flags.length
+    ? `${flags.length} issue${flags.length > 1 ? "s" : ""} marked below, with a compliant version ready to send.`
+    : "No issues found. This message is ready to send as written.");
+
+  // id: use backend's if present, otherwise generate one
+  const id = raw.id || ("CS-" + String(Date.now()).slice(-6));
+
+  return {
+    id,
+    riskLevel,
+    summary,
+    flags,
+    rewrite: rewrite || originalText,
+    escalate,
+  };
 }
 
 // ============================================================
